@@ -1,0 +1,60 @@
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /*width: 200px;*/
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+li.navbar{
+  display: inline;
+  float: left;
+}
+
+a.navbar{
+  display: block;
+  color: #000;
+  text-align: center;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+img.profile {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+button {
+  background-color: #008CBA;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: sans-serif;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/ignasi_pattern_s.png");
+}
+
+section {
+  margin-left: 50px;
+  padding: 1em;
+  overflow: hidden;
+}
+
+article {
+  width: 700px;
+  border-radius: 5px;
+  background-color: rgb(251, 254, 254);
+}

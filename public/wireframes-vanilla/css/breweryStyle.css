@@ -1,0 +1,37 @@
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /*width: 200px;*/
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+li.navbar{
+  display: inline;
+  float: left;
+}
+
+a.navbar{
+  display: block;
+  color: #000;
+  text-align: center;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+body {
+  font-family: sans-serif;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/ignasi_pattern_s.png");
+}
+
+article {
+  margin-left: 50px;
+  padding: 1em;
+  overflow: hidden;
+}
