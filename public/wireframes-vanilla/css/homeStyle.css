@@ -106,7 +106,16 @@ button:hover {
 .actions {
   padding-left: 10px;
   padding-bottom: 10px;
+}
+
 section {
     margin-left: 80px;
     padding: 1em;
     overflow: hidden;
+}
+
+#table {
+  margin-left: 80px;
+  padding: 1em;
+  overflow: hidden;
+}
