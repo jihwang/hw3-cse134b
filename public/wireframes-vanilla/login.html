@@ -3,9 +3,46 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
     <title>Brewdex - Login</title>
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCck0J0h1VN7P5YTGz9CS2BKRJd-z33P8M",
+        authDomain: "b-hw3-3793a.firebaseapp.com",
+        databaseURL: "https://b-hw3-3793a.firebaseio.com",
+        storageBucket: "b-hw3-3793a.appspot.com",
+        messagingSenderId: "541447121792"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '/wireframes-vanilla/home.html',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+      </script>
   </head>
   <body>
+    <div id="firebaseui-auth-container"></div>
+
     <div class="container">
       <div id="menu">
         <img src="../images/logo.png" style="display: flex; margin: auto;" alt="BrewDex"/>
@@ -43,5 +80,6 @@
         </div>
       </div>
     </div>
+
   </body>
 </html>
