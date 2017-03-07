@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Brewdex - Login</title>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script>
@@ -39,8 +40,9 @@
       // The start method will wait until the DOM is loaded.
       ui.start('#firebaseui-auth-container', uiConfig);
       </script>
+    <script src="js/authentication.js"></script>
   </head>
-  <body>
+  <body onload="checkLogin()">
     <div id="firebaseui-auth-container"></div>
 
     <div class="container">
@@ -52,30 +54,22 @@
       <div class="tab-container">
         <div id="register" class="tab-content">
           <h2>Register</h2>
-          <form>
-            <h3>Username</h3>
-            <input type="text">
-            <h3>Password</h3>
-            <input type="password">
-            <h3>Confirm Password</h3>
-            <input type="password">
-            <h3>Full Name</h3>
-            <input type="text">
             <h3>Email</h3>
-            <input type="text"><br><br>
-            <button formaction="/wireframes-vanilla/home.html">Submit</button>
-            <button formaction="/wireframes-vanilla/home.html">Register</button>
-          </form>
+            <input id="registerEmail" type="text"><br><br>
+            <h3>Password</h3>
+            <input id="registerPassword" type="password">
+            <h3>Confirm Password</h3>
+            <input id="registerPassword2" type="password">
+            <button onclick="registerWithEmail()" >Submit</button>
         </div>
         <div id="login" class="tab-content">
           <h2>Login</h2>
           <form>
-            <h3>Username</h3>
-            <input type="text">
+            <h3>Email</h3>
+            <input id="loginEmail" type="text">
             <h3>Password</h3>
-            <input type="password"><br>
-            <button formaction="/wireframes-vanilla/home.html">Submit</button>
-            <button formaction="/wireframes-vanilla/home.html">Register</button>
+            <input id= "loginPassword" type="password"><br>
+            <button onclick="signIn()" "/wireframes-vanilla/home.html">Submit</button>
           </form>
         </div>
       </div>
