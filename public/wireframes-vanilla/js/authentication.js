@@ -2,7 +2,7 @@
 function checkLogin() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      window.location = "/wireframes-vanilla/home.html";
+      window.location = "/wireframes-vanilla/html/home.html";
     }
   });
 }
@@ -20,7 +20,7 @@ function registerWithEmail() {
   console.log(password + password2 + email)
   var success = true;
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
-    window.location = "/wireframes-vanilla/home.html";
+    window.location = "/wireframes-vanilla/html/home.html";
   }, function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -72,7 +72,7 @@ function validateEmail(email) {
 function signIn() {
   if (firebase.auth().currentUser) {
     // Already logged in, redirect to home
-    window.location = "/wireframes-vanilla/home.html";
+    window.location = "/wireframes-vanilla/html/home.html";
   } else {
     var email = $('#loginEmail').val();
     var password = $('#loginPassword').val();
@@ -82,7 +82,7 @@ function signIn() {
     }
     // Sign in with email and pass.
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
-      window.location = "/wireframes-vanilla/home.html";
+      window.location = "/wireframes-vanilla/html/home.html";
     }, function(error) {
       // Handle Errors here.
       var errorCode = error.code;
