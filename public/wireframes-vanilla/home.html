@@ -22,40 +22,45 @@
       firebase.initializeApp(config);
     </script>
     <script type="text/javascript">
+      function logout() {
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          window.location = "/wireframes-vanilla/login.html";
+        }, function(error) {
+          alert(error);
+        });
+      }
       initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var providerData = user.providerData;
-            user.getToken().then(function(accessToken) {
-              document.getElementById('sign-in-status').textContent = 'Signed in';
-              document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  ');
-            });
+            // // User is signed in.
+            // var displayName = user.displayName;
+            // var email = user.email;
+            // var emailVerified = user.emailVerified;
+            // var photoURL = user.photoURL;
+            // var uid = user.uid;
+            // var providerData = user.providerData;
+            // user.getToken().then(function(accessToken) {
+            //   document.getElementById('sign-in-status').textContent = 'Signed in';
+            //   document.getElementById('sign-in').textContent = 'Sign out';
+            //   document.getElementById('account-details').textContent = JSON.stringify({
+            //     displayName: displayName,
+            //     email: email,
+            //     emailVerified: emailVerified,
+            //     photoURL: photoURL,
+            //     uid: uid,
+            //     accessToken: accessToken,
+            //     providerData: providerData
+            //   }, null, '  ');
+            // });
           } else {
             // User is signed out.
-            document.getElementById('sign-in-status').textContent = 'Signed out';
-            document.getElementById('sign-in').textContent = 'Sign in';
-            document.getElementById('account-details').textContent = 'null';
+            window.location = "/wireframes-vanilla/login.html";
           }
         }, function(error) {
           console.log(error);
         });
       };
-
       window.addEventListener('load', function() {
         initApp()
       });
@@ -66,15 +71,12 @@
         <li class="navbar"><a class="navbar" href="/wireframes-vanilla/profile.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> PROFILE</a></li>
         <li class="navbar"><a class="navbar" href="/wireframes-vanilla/buddies.html"><i class="fa fa-users" aria-hidden="true"></i> BEER BUDDIES</a></li>
         <li class="navbar"><a class="navbar" href="/wireframes-vanilla/notifications.html"><i class="fa fa-bell" aria-hidden="true"></i> NOTIFICATIONS</a></li>
-        <li class="logout"><a class="navbar" href="/wireframes-vanilla/login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
+        <li class="logout"><a class="navbar" onclick="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
       </ul>
     </nav>
   </head>
   <body>
     <br/>
-    <h1 id="sign-in-status">test</h1>
-    <button id="sign-in">test</button>
-    <h1 id="account-details">test</h1>
     <section class="container">
         <h4>Breweries</h4>
         <form>

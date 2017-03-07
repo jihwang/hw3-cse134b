@@ -76,13 +76,14 @@ function signIn() {
   } else {
     var email = $('#loginEmail').val();
     var password = $('#loginPassword').val();
-    console.log(password)
-    validateRegistrationFields(password, password, email);
 
+    if(!validateRegistrationFields(password, password, email)) {
+      return;
+    }
     // Sign in with email and pass.
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
       window.location = "/wireframes-vanilla/home.html";
-    }), function(error) {
+    }, function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -93,6 +94,6 @@ function signIn() {
         alert(errorMessage);
       }
       console.log(error);
-    };
+    });
   }
 }
