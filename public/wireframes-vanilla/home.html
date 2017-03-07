@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brewdex - Home</title>
+    <script src="https://use.fontawesome.com/6eb7a56903.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
@@ -57,18 +60,17 @@
         initApp()
       });
     </script>
-  </head>
-  <body>
     <nav>
       <ul class="navbar">
-        <li class="navbar"><a href="/wireframes-vanilla/home.html"><img src="images/logo_small.png" height="40" width="65" alt="logo"></a>
-        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/home.html">Home</a></li>
-        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/profile.html">Profile</a></li>
-        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/notifications.html">Notifications <b>(1)</b></a></li>
-        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/buddies.html">Beer Buddies</a></li>
-        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/login.html">Logout</a></li>
+        <li class="navbar"><a id="logo" href="/wireframes-vanilla/home.html"><img src="images/logo_small.png" height="50" width="75" alt="logo"></a>
+        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/profile.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> PROFILE</a></li>
+        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/buddies.html"><i class="fa fa-users" aria-hidden="true"></i> BEER BUDDIES</a></li>
+        <li class="navbar"><a class="navbar" href="/wireframes-vanilla/notifications.html"><i class="fa fa-bell" aria-hidden="true"></i> NOTIFICATIONS</a></li>
+        <li class="logout"><a class="navbar" href="/wireframes-vanilla/login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
       </ul>
     </nav>
+  </head>
+  <body>
     <br/>
     <h1 id="sign-in-status">test</h1>
     <button id="sign-in">test</button>
