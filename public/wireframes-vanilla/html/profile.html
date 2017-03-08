@@ -4,8 +4,41 @@
     <meta charset="utf-8">
     <title>Brewdex - Profile</title>
     <link rel="stylesheet" type="text/css" href="../css/profileStyle.css">
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCck0J0h1VN7P5YTGz9CS2BKRJd-z33P8M",
+        authDomain: "b-hw3-3793a.firebaseapp.com",
+        databaseURL: "https://b-hw3-3793a.firebaseio.com",
+        storageBucket: "b-hw3-3793a.appspot.com",
+        messagingSenderId: "541447121792"
+      };
+      firebase.initializeApp(config);
+        initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            downloadProfilePic();
+            var a = readBio();
+            console.log(a);
+          } else {
+            // User is signed out.
+            window.location = "/wireframes-vanilla/html/login.html";
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+      window.addEventListener('load', function() {
+        initApp()
+      });
+    </script>
     <script src="https://use.fontawesome.com/6eb7a56903.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="../js/uploadImage.js"></script>
+  </head>
+  <body>
     <nav>
       <ul class="navbar">
         <li class="navbar"><a id="logo" href="/wireframes-vanilla/html/home.html"><img src="../images/logo_small.png" height="50" width="75" alt="logo"></a>
@@ -15,37 +48,28 @@
         <li class="logout"><a class="navbar" href="/wireframes-vanilla/html/login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
       </ul>
     </nav>
-  </head>
-  <body>
     <br/>
   	<section class="container">
    	 <header class="item">
-   	   <img src="/wireframes-vanilla/images/profile_placeholder.png" alt="profile">
+   	   <img id="profilePic" src="/wireframes-vanilla/images/profile_placeholder.png" alt="profile" >
    	   <h1>Profile</h1>
    	   <h3>John Doe</h3>
    	 </header>
    	 <section class="item">
    	   <h3>Bio</h3>
 			 <button>Edit</button>
-   	   <p>
-   	     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu justo mi. Nulla ac ipsum ac leo viverra posuere
-   	     ut at sem. Vestibulum scelerisque quam sit amet malesuada euismod. Nulla fermentum libero sed augue euismod, vel mattis
-   	     justo vestibulum. Vivamus nulla risus, finibus eu urna ut, volutpat tempus arcu. In hac habitasse platea dictumst. Nulla
-         sed gravida arcu. Aenean mattis ex nisi, maximus venenatis ipsum imperdiet ut. Nulla eu aliquam erat.Pellentesque non
-         tempor massa. Donec bibendum urna sed elit ornare, eu dignissim lorem maximus. Vestibulum dolor risus, scelerisque et justo
-         quis, egestas dignissim orci. Donec sapien erat, rhoncus a fermentum nec, dapibus ut justo. Donec posuere, est sed blandit
-         posuere, risus sem convallis leo, vel pretium arcu diam ac sapien. Cras at molestie ante, in hendrerit nunc. In tempor sapien
-         a euismod efficitur. Sed auctor nunc id est blandit condimentum. Aliquam at tortor ac massa sodales volutpat vitae sit amet
-         quam.Vestibulum egestas massa aliquet nisl viverra, sed tristique arcu aliquet. Pellentesque dignissim volutpat ipsum, ac volutpat
-         leo. Etiam posuere ac sapien eu commodo. Nulla facilisi. Cras id faucibus dui. Class aptent taciti sociosqu ad litora torquent
-         per conubia nostra, per inceptos himenaeos. Nulla sit amet tellus vel ligula imperdiet bibendum feugiat vel lorem.
+   	   <p id="bioText">
    	   </p>
+       <input id="bioInput" type="text">
+       <button onclick="updateBio()">Create/Update</button>
+       <button onclick="deleteBio()">Delete</button>
    	 </section>
 		 <section class="item">
       <h3>Account Info</h3>
 		 	<p>sample@sample.com</p><button>Change Email</button>
 			<p>***********</p><button>Change Password</button>
 		 </section>
+     <input id="profileUpload" onchange="uploadProfilePic()" type="file" accept="image/*">
 
   	</section>
 
