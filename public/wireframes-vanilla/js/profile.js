@@ -90,6 +90,7 @@ function displayBio(text) {
   $("#bioText").text(text);
 }
 
+function change
 const user = firebase.auth().currentUser;
 const credential = firebase.auth.EmailAuthProvider.credential(
     user.email,
